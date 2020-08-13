@@ -29,8 +29,16 @@ export function api() {
       return config;
     },
     function (error) {
-      window.localStorage.getItem('');
       return Promise.reject(error);
+    }
+  );
+  api.interceptors.response.use(
+    function (response) {
+      return response;
+    },
+    function (error) {
+      window.localStorage.setItem('@token', '');
+      window.location.href = '/';
     }
   );
   return api;

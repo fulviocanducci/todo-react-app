@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSetToken } from '../../context';
 import { cssValidOrInvalid, requestLogin, validateEmail } from '../../utils';
@@ -14,10 +14,6 @@ function Login() {
       }
     });
   };
-
-  useEffect(() => {
-    console.log('render');
-  }, []);
 
   return (
     <div>

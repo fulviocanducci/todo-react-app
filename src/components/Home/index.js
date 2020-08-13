@@ -1,12 +1,18 @@
 import React from 'react';
 import PrivateRouter from './../PrivateRouter';
-import { BrowserRouter, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
 import Create from './components/Create';
 import Todo from './components/Todo';
 
 import './index.css';
+import { useSetToken } from '../../context';
 
 function Home() {
+  const setToken = useSetToken();
+  const handleEnd = () => {
+    setToken('');
+    return true;
+  };
   return (
     <BrowserRouter>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -36,6 +42,11 @@ function Home() {
                 Cadastro
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="" onClick={handleEnd} className="nav-link">
+                Sair
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
@@ -43,7 +54,9 @@ function Home() {
         <Switch>
           <PrivateRouter path="/todo" component={Todo} />
           <PrivateRouter path="/todo-cadastro" component={Create} />
-          <PrivateRouter exact path="/" component={Todo} />
+          <PrivateRouter>
+            <Redirect to="/todo" strict={true} />
+          </PrivateRouter>
         </Switch>
       </main>
     </BrowserRouter>
