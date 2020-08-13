@@ -10,9 +10,9 @@ function Home() {
   return (
     <BrowserRouter>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a className="navbar-brand" href="/">
+        <Link to="/todo" className="navbar-brand">
           Todo
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

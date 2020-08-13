@@ -13,10 +13,11 @@ function Create() {
     const postData = { ...data, done: false };
     requestTodo.post(postData).then((response) => {
       if (response.status === 201) {
-        history.push('/todo');
+        handleCancel();
       }
     });
   };
+  const handleCancel = () => history.push('/todo');
   return (
     <>
       <Top />
@@ -39,8 +40,15 @@ function Create() {
               })}
             />
           </div>
-          <button type="submit" className="btn btn-primary btn-block">
+          <button type="submit" className="btn btn-primary mr-1">
             Salvar
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleCancel}
+          >
+            Cancelar
           </button>
         </form>
       </Body>
