@@ -41,9 +41,9 @@ function Home() {
       </nav>
       <main role="main" className="container">
         <Switch>
-          <PrivateRouter exact path="/" component={Todo} />
           <PrivateRouter path="/todo" component={Todo} />
           <PrivateRouter path="/todo-cadastro" component={Create} />
+          <PrivateRouter exact path="/" component={Todo} />
         </Switch>
       </main>
     </BrowserRouter>
