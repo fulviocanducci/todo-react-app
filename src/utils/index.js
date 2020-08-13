@@ -37,8 +37,7 @@ export function api() {
       return response;
     },
     function (error) {
-      window.localStorage.setItem('@token', '');
-      window.location.href = '/';
+      return Promise.reject(error);
     }
   );
   return api;

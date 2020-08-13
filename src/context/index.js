@@ -37,11 +37,17 @@ function useTokenValid() {
   return token.length > 0;
 }
 
+function useTokenStorageValid() {
+  const token = window.localStorage.getItem('@token');
+  if (!token) return false;
+  return token.length > 0;
+}
+
 function useSetToken() {
   const context = useContext(TokenContext);
   const { setToken } = context;
   return setToken;
 }
 
-export { useToken, useTokenValid, useSetToken };
+export { useToken, useTokenValid, useTokenStorageValid, useSetToken };
 export default TokenProvider;
